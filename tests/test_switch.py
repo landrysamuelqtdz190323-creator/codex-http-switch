@@ -231,7 +231,7 @@ class ConfigTests(unittest.TestCase):
 
     def test_doctor_json_does_not_leak_auth_or_raw_log_body(self):
         db = self.path.parent / 'logs.sqlite'
-        with sqlite3.connect(db) as c:
+        with contextlib.closing(sqlite3.connect(db)) as c, c:
             c.execute('CREATE TABLE logs(id INTEGER PRIMARY KEY,ts INTEGER,target TEXT,feedback_log_body TEXT)')
             c.execute('INSERT INTO logs VALUES(1,?,?,?)', (int(time.time()), 'codex_core::responses_retry',
                       'PRIVATE_PROMPT SYNTHETIC_SECRET websocket closed by server before response.completed'))
