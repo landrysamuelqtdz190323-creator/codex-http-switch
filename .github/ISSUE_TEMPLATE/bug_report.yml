@@ -1,0 +1,22 @@
+name: 连接或配置问题
+description: 提交匿名化重现信息，请勿上传凭证、完整配置或原始日志。
+body:
+  - type: input
+    id: version
+    attributes:
+      label: Codex 客户端版本
+    validations:
+      required: true
+  - type: input
+    id: platform
+    attributes:
+      label: 操作系统与 Python 版本
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 重现步骤、预期与实际结果
+      description: 不要粘贴 auth.json、完整 config、备份、token 或私人对话。
+    validations:
+      required: true
