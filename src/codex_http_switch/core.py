@@ -227,7 +227,7 @@ def log_summary(db: Path) -> dict:
         return {"available": False}
     since = int(dt.datetime.now(dt.timezone.utc).timestamp()) - 86400
     try:
-        with sqlite3.connect(db.absolute().as_uri() + "?mode=ro", uri=True, timeout=2) as conn:
+        with contextlib.closing(sqlite3.connect(db.absolute().as_uri() + "?mode=ro", uri=True, timeout=2)) as conn:
             rows = conn.execute("SELECT ts,feedback_log_body FROM logs WHERE ts>=? AND target IN "
                                 "('codex_core::responses_retry','codex_core::client') ORDER BY id DESC LIMIT 200",
                                 (since,)).fetchall()
