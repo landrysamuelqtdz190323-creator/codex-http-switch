@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "codex-http-switch"
+version = "0.1.0"
+description = "Diagnose Codex WebSocket retries and reversibly select HTTP/SSE."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+dependencies = ["tomlkit>=0.13,<1"]
+
+[project.urls]
+Homepage = "https://github.com/landrysamuelqtdz190323-creator/codex-http-switch"
+Issues = "https://github.com/landrysamuelqtdz190323-creator/codex-http-switch/issues"
+
+[project.scripts]
+codex-http-switch = "codex_http_switch.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
