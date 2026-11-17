@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.DS_Store
+.env
+auth.json
+config.toml
+.http-switch-backups/
+*.receipt.json
+*.sqlite*
+*.log
+local-results/
